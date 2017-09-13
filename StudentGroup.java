@@ -225,6 +225,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
 		// Add your implementation here
+		if(date==null){
+		throw new IllegalArgumentException("null");}
 		
 		   ArrayList<Student> temp = new ArrayList<>();
 		   Calendar cal = getCalendar(date);
@@ -241,6 +243,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) {
 		// Add your implementation here
+		if(indexOfStudent==0){
+		throw new IllegalArgumentException("null");}
 		Date now = new Date();
            return this.students[indexOfStudent].getBirthDate().getYear() - now.getYear();
 	}
@@ -272,6 +276,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		this.bubbleSort();
 		   int i;
 		   for(i = 0; i < this.students.length; i++)
