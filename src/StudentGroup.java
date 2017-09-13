@@ -120,7 +120,11 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
-		
+		int ind = getStudentIndex(student);
+		   ArrayList<Student> temp = new ArrayList<>();
+		   for(int i = 0; i < ind; i++)
+			   temp.add(this.students[i]);
+		   this.students = temp.toArray(new Student[temp.size()]);
 	}
 
 	@Override
@@ -136,6 +140,11 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
+		 int ind = getStudentIndex(student);
+		   ArrayList<Student> temp = new ArrayList<>();
+		   for(int i = ind; i < this.students.length; i++)
+			   temp.add(this.students[i]);
+		   this.students = temp.toArray(new Student[temp.size()]);
 		
 	}
 
@@ -238,6 +247,13 @@ public class StudentGroup implements StudentArrayOperation {
 			   if(this.students[i].equals(student)) break;
 		   return this.students[i+1];
 	}
+	
+	private int getStudentIndex(Student student) {
+         for(int i = 0; i < this.students.length; i++)
+			 if(this.students[i].equals(student)) return i;
+		 return -1;
+    }
+	
 	private int getDiffYears(Date first, Date last) {
             return first.getYear() - last.getYear();
 	}
