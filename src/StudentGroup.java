@@ -57,12 +57,18 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
+		else if(index<0||index>students.length){
+		throw new IllegalArgumentException("null");}
 		this.getStudents()[index]=student;
 	}
 
 	@Override
 	public void addFirst(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		Student[] temp = new Student[this.students.length+1];
 		 temp[0] = student;
 		 for(int k = 1; k < temp.length; k++)
@@ -73,6 +79,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		Student[] temp = new Student[this.getStudents().length+1];
 		 for(int k = 0; k < this.students.length; k++)
 			 temp[k] = this.students[k];
@@ -83,6 +91,10 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
+		else if(index<0||index>students.length){
+		throw new IllegalArgumentException("null");}
 		 Student[] temp = new Student[this.students.length+1];
 		 for(int i = 0; i < index; i++)
 			 temp[i] = this.students[i];
@@ -95,6 +107,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+		if(index<0||index>students.length){
+		throw new IllegalArgumentException("null");}
 		Student[] temp = new Student[this.students.length-1]; 
 		 int c = 0;
 		 for(int i = 0; i < this.students.length; i++)
@@ -105,6 +119,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void remove(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		Student[] temp = new Student[this.students.length-1]; 
 		 int c = 0;
 		 for(int i = 0; i < this.students.length; i++)
@@ -115,6 +131,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
+		if(index<0||index>students.length){
+		throw new IllegalArgumentException("null");}
 		Student[] temp = new Student[index]; 
 		 int c = 0;
 		 for(int i = 0; i < index; i++)
@@ -125,6 +143,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		int ind = getStudentIndex(student);
 		   ArrayList<Student> temp = new ArrayList<>();
 		   for(int i = 0; i < ind; i++)
@@ -135,6 +155,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		Student[] temp = new Student[this.students.length-index]; 
 		 int c = 0;
 		 for(int i = index; i < this.students.length; i++)
@@ -145,6 +167,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		 int ind = getStudentIndex(student);
 		   ArrayList<Student> temp = new ArrayList<>();
 		   for(int i = ind; i < this.students.length; i++)
@@ -174,6 +198,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		ArrayList<Student> temp = new ArrayList<>();
 		   for(Student s : this.students)
 		   {
@@ -187,6 +213,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
 		// Add your implementation here
+		if(firstDate==null||lastDate==null){
+		throw new IllegalArgumentException("null");}
 		ArrayList<Student> temp = new ArrayList<>();
 		   for(Student s : this.students)
 		   {
@@ -199,6 +227,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
 		// Add your implementation here
+		if(date==null){
+		throw new IllegalArgumentException("null");}
 		
 		   ArrayList<Student> temp = new ArrayList<>();
 		   Calendar cal = getCalendar(date);
@@ -215,6 +245,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) {
 		// Add your implementation here
+		if(indexOfStudent==0){
+		throw new IllegalArgumentException("null");}
 		Date now = new Date();
            return this.students[indexOfStudent].getBirthDate().getYear() - now.getYear();
 	}
@@ -246,6 +278,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
+		if(students==null){
+		throw new IllegalArgumentException("null");}
 		this.bubbleSort();
 		   int i;
 		   for(i = 0; i < this.students.length; i++)
