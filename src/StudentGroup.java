@@ -120,11 +120,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
-		int ind = getStudentIndex(student);
-		   ArrayList<Student> temp = new ArrayList<>();
-		   for(int i = 0; i < ind; i++)
-			   temp.add(this.students[i]);
-		   this.students = temp.toArray(new Student[temp.size()]);
+		
 	}
 
 	@Override
@@ -140,11 +136,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
-		int ind = getStudentIndex(student);
-		   ArrayList<Student> temp = new ArrayList<>();
-		   for(int i = ind; i < this.students.length; i++)
-			   temp.add(this.students[i]);
-		   this.students = temp.toArray(new Student[temp.size()]);
+		
 	}
 
 	@Override
@@ -193,7 +185,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
 		// Add your implementation here
-		ArrayList<Student> temp = new ArrayList<>();
+		
+		   ArrayList<Student> temp = new ArrayList<>();
 		   Calendar cal = getCalendar(date);
 		   cal.add(Calendar.DATE, days);
            date = cal.getTime();
@@ -244,5 +237,14 @@ public class StudentGroup implements StudentArrayOperation {
 		   for(i = 0; i < this.students.length; i++)
 			   if(this.students[i].equals(student)) break;
 		   return this.students[i+1];
+	}
+	private int getDiffYears(Date first, Date last) {
+            return first.getYear() - last.getYear();
+	}
+
+	private Calendar getCalendar(Date date) {
+          Calendar aDay = Calendar.getInstance();
+          aDay.setTime(date);
+		  return aDay;
 	}
 }
